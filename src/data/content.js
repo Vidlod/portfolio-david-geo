@@ -69,7 +69,7 @@ export const content = {
       successDesc: 'Te respondo en menos de 24 horas.',
     },
     footer: {
-      copy: '© 2025 David Geo. Todos los derechos reservados.',
+      copy: '© 2026 David Geo. Todos los derechos reservados.',
       made: 'Hecho con pasión desde Colombia 🇨🇴',
     },
   },
@@ -144,7 +144,7 @@ export const content = {
       successDesc: "I'll get back to you within 24 hours.",
     },
     footer: {
-      copy: '© 2025 David Geo. All rights reserved.',
+      copy: '© 2026 David Geo. All rights reserved.',
       made: 'Made with passion from Colombia 🇨🇴',
     },
   },
@@ -153,12 +153,24 @@ export const content = {
 export const projects = [
   {
     name: 'La Milpa',
-    desc: { es: 'Landing page para restaurante mexicano moderno. Hero animado, menú interactivo, galería con lightbox y formulario de reservación.', en: 'Landing page for a modern Mexican restaurant. Animated hero, interactive menu, lightbox gallery and reservation form.' },
+    desc: {
+      es: 'Landing page para restaurante mexicano moderno. Hero animado, menú interactivo, galería con lightbox y formulario de reservación.',
+      en: 'Landing page for a modern Mexican restaurant. Animated hero, interactive menu, lightbox gallery and reservation form.',
+    },
     tech: ['React', 'Vite', 'Tailwind CSS'],
     url: 'https://la-milpa.vercel.app',
     image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=80',
   },
-  { wip: true },
+  {
+    name: 'Estimador',
+    desc: {
+      es: 'Simulador de presupuesto para proyectos web freelance. El cliente configura tipo, alcance y plazo — el estimado se calcula en vivo. Estética blueprint editorial.',
+      en: 'Freelance project budget simulator. The client configures type, scope and timeline — the estimate is calculated live. Editorial blueprint aesthetic.',
+    },
+    tech: ['React', 'Vite', 'Tailwind CSS'],
+    url: 'https://simulador-presupuesto-freelance.vercel.app',
+    image: 'https://image.thum.io/get/width/1200/crop/800/https://simulador-presupuesto-freelance.vercel.app',
+  },
   { wip: true },
 ]
 
