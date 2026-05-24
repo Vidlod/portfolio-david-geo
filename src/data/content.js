@@ -24,9 +24,26 @@ export const content = {
       label: 'Servicios',
       title: 'Lo que ofrezco',
       items: [
-        { title: 'Landing Pages', desc: 'Páginas optimizadas para convertir. Rápidas, responsivas y con diseño premium que genera confianza desde el primer segundo.' },
-        { title: 'Portafolios Web', desc: 'Tu carta de presentación en línea. Diseño profesional que refleja tu marca personal y atrae los clientes correctos.' },
-        { title: 'Web Apps', desc: 'Dashboards y aplicaciones a medida. Funcionales, intuitivas y adaptadas exactamente a tu flujo de trabajo.' },
+        {
+          title: 'Landing Pages',
+          desc: 'Diseñadas para convertir visitas en clientes. Velocidad máxima, copy persuasivo y diseño que genera confianza desde el primer scroll.',
+          tags: ['Diseño a medida', 'SEO técnico', 'Alta velocidad', 'Responsive'],
+        },
+        {
+          title: 'Sitios & Portafolios',
+          desc: 'Tu presencia digital con identidad propia. Un sitio que te diferencia, refleja lo que eres y atrae exactamente al cliente que buscas.',
+          tags: ['Marca personal', 'CMS opcional', 'Multi-página', 'Dominio propio'],
+        },
+        {
+          title: 'Web Apps',
+          desc: 'Herramientas digitales que resuelven problemas reales. Dashboards, sistemas internos y aplicaciones hechas para tu flujo de trabajo exacto.',
+          tags: ['React + Python', 'Base de datos', 'Autenticación', 'APIs'],
+        },
+        {
+          title: 'Mantenimiento & Soporte',
+          desc: 'Tu sitio en manos expertas después del lanzamiento. Actualizaciones, corrección de errores, mejoras de rendimiento y soporte continuo.',
+          tags: ['Actualizaciones', 'Soporte rápido', 'Backups', 'Monitoreo'],
+        },
       ],
     },
     projects: {
@@ -82,9 +99,26 @@ export const content = {
       label: 'Services',
       title: 'What I offer',
       items: [
-        { title: 'Landing Pages', desc: 'Conversion-optimized pages. Fast, responsive and with premium design that builds trust from the first second.' },
-        { title: 'Web Portfolios', desc: 'Your online business card. Professional design that reflects your personal brand and attracts the right clients.' },
-        { title: 'Web Apps', desc: 'Custom dashboards and apps. Functional, intuitive and tailored exactly to your workflow.' },
+        {
+          title: 'Landing Pages',
+          desc: 'Built to turn visitors into clients. Maximum speed, persuasive copy and design that builds trust from the very first scroll.',
+          tags: ['Custom design', 'Technical SEO', 'High performance', 'Responsive'],
+        },
+        {
+          title: 'Sites & Portfolios',
+          desc: 'Your digital presence with its own identity. A site that sets you apart, reflects who you are, and attracts exactly the right clients.',
+          tags: ['Personal brand', 'Optional CMS', 'Multi-page', 'Custom domain'],
+        },
+        {
+          title: 'Web Apps',
+          desc: 'Digital tools that solve real problems. Dashboards, internal systems and applications tailored to your exact workflow.',
+          tags: ['React + Python', 'Database', 'Auth flows', 'API integrations'],
+        },
+        {
+          title: 'Maintenance & Support',
+          desc: 'Expert hands on your site after launch. Updates, bug fixes, performance improvements and ongoing support whenever you need it.',
+          tags: ['Updates', 'Fast support', 'Backups', 'Monitoring'],
+        },
       ],
     },
     projects: {

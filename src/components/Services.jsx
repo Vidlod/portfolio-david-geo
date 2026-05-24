@@ -2,11 +2,30 @@ import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
 
+/* SVG icons — one per service */
+const icons = [
+  /* Landing Pages — cursor click */
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+  </svg>,
+  /* Sites & Portfolios — layout */
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+  </svg>,
+  /* Web Apps — code */
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+  </svg>,
+  /* Maintenance — wrench */
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+  </svg>,
+]
+
 function ServiceCard({ s, idx, inView, delay }) {
   const [h, setH] = useState(false)
 
   return (
-    /* Outer wrapper handles reveal; inner handles hover */
     <div style={{
       opacity: inView ? 1 : 0,
       transform: inView ? 'translateY(0)' : 'translateY(40px)',
@@ -17,51 +36,74 @@ function ServiceCard({ s, idx, inView, delay }) {
         onMouseEnter={() => setH(true)}
         onMouseLeave={() => setH(false)}
         style={{
-          padding: 'clamp(1.75rem, 3vw, 3rem) clamp(1.5rem, 2.5vw, 2.5rem)',
+          padding: 'clamp(1.75rem, 3vw, 2.5rem)',
           backgroundColor: h ? 'var(--bg-soft)' : 'transparent',
           border: '1px solid var(--line)',
-          borderColor: h ? 'rgba(237,234,227,0.2)' : 'var(--line)',
+          borderColor: h ? 'rgba(237,234,227,0.22)' : 'var(--line)',
           transition: 'background 0.45s, border-color 0.45s, transform 0.45s, box-shadow 0.45s',
           transform: h ? 'translateY(-5px)' : 'translateY(0)',
-          boxShadow: h ? '0 20px 60px rgba(0,0,0,0.35)' : 'none',
-          height: '100%', cursor: 'default',
+          boxShadow: h ? '0 20px 60px rgba(0,0,0,0.3)' : 'none',
+          display: 'flex', flexDirection: 'column', gap: '1.5rem',
+          height: '100%',
         }}>
-        {/* Number */}
-        <span style={{
-          fontSize: '0.75rem', color: 'var(--fg-faint)',
-          marginBottom: '3rem', display: 'block',
-          letterSpacing: '0.02em',
-        }}>0{idx + 1} / 03</span>
+
+        {/* Icon + number row */}
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
+        }}>
+          <div style={{
+            width: '44px', height: '44px',
+            border: '1px solid var(--line)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: h ? 'var(--accent)' : 'var(--fg-dim)',
+            transition: 'color 0.4s, border-color 0.4s',
+            borderColor: h ? 'rgba(232,185,132,0.4)' : 'var(--line)',
+            flexShrink: 0,
+          }}>
+            {icons[idx]}
+          </div>
+          <span style={{
+            fontSize: '0.72rem', color: 'var(--fg-faint)', letterSpacing: '0.02em',
+          }}>0{idx + 1}</span>
+        </div>
 
         {/* Title */}
         <h3 className="display" style={{
-          fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
-          color: 'var(--fg)', marginBottom: '1.25rem',
-          transition: 'transform 0.45s',
-          transform: h ? 'translateX(6px)' : 'translateX(0)',
+          fontSize: 'clamp(1.5rem, 2.3vw, 2rem)',
+          color: 'var(--fg)',
+          transition: 'transform 0.4s',
+          transform: h ? 'translateX(5px)' : 'translateX(0)',
         }}>
           {s.title}
         </h3>
 
         {/* Description */}
         <p style={{
-          fontSize: 'clamp(0.9rem, 1.5vw, 0.96rem)',
-          lineHeight: 1.75, color: 'var(--fg-dim)', marginBottom: '2.5rem',
+          fontSize: 'clamp(0.9rem, 1.4vw, 0.95rem)',
+          lineHeight: 1.8, color: 'var(--fg-dim)',
+          flexGrow: 1,
         }}>{s.desc}</p>
 
-        {/* Arrow link */}
-        <div style={{
-          display: 'inline-flex', alignItems: 'center', gap: '0.65rem',
-          color: h ? 'var(--accent)' : 'var(--fg-faint)',
-          fontSize: '0.82rem',
-          transition: 'color 0.35s, gap 0.35s',
-        }}>
-          <span>{s.title}</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-            style={{ transition: 'transform 0.45s', transform: h ? 'translateX(5px)' : 'translateX(0)' }}>
-            <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
+        {/* Tags */}
+        {s.tags && (
+          <div style={{
+            display: 'flex', flexWrap: 'wrap', gap: '0.4rem',
+            paddingTop: '1.25rem',
+            borderTop: '1px solid var(--line)',
+          }}>
+            {s.tags.map(tag => (
+              <span key={tag} style={{
+                fontSize: '0.72rem', color: h ? 'var(--fg-dim)' : 'var(--fg-faint)',
+                border: '1px solid var(--line)',
+                padding: '0.3rem 0.65rem',
+                letterSpacing: '0.01em',
+                transition: 'color 0.35s',
+              }}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -76,17 +118,15 @@ export default function Services() {
       <style>{`
         #servicios .services-grid {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 1.5rem;
-        }
-        @media (max-width: 1024px) {
-          #servicios .services-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 640px) {
           #servicios .services-grid { grid-template-columns: 1fr; gap: 1rem; }
         }
       `}</style>
 
+      {/* Eyebrow */}
       <div className="eyebrow" style={{
         opacity: inView ? 1 : 0,
         transform: inView ? 'translateY(0)' : 'translateY(16px)',
@@ -96,6 +136,7 @@ export default function Services() {
         02 — {t.services.label}
       </div>
 
+      {/* Headline */}
       <h2 className="display" style={{
         fontSize: 'clamp(2.2rem, 5.5vw, 5rem)',
         color: 'var(--fg)',
@@ -107,9 +148,10 @@ export default function Services() {
         {t.services.title}
       </h2>
 
+      {/* 2×2 Grid */}
       <div className="services-grid">
         {t.services.items.map((s, i) => (
-          <ServiceCard key={i} s={s} idx={i} inView={inView} delay={0.22 + i * 0.1} />
+          <ServiceCard key={i} s={s} idx={i} inView={inView} delay={0.2 + i * 0.08} />
         ))}
       </div>
     </section>
