@@ -1,6 +1,11 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import emailjs from '@emailjs/browser'
 import { useLanguage } from '../context/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
+
+const EMAILJS_SERVICE  = 'service_vynd56d'
+const EMAILJS_TEMPLATE = 'template_l3plcir'
+const EMAILJS_KEY      = '47zZDCw1reqTnp5uS'
 
 const inputStyle = (focused, error) => ({
   width: '100%',
@@ -24,6 +29,8 @@ export default function Contact() {
   const [focused, setFocused] = useState(null)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState(false)
   const [btnH, setBtnH] = useState(false)
 
   const validate = () => {
@@ -34,11 +41,26 @@ export default function Contact() {
     return e
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
-    setSent(true)
+
+    setSending(true)
+    setSendError(false)
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE,
+        EMAILJS_TEMPLATE,
+        { name: form.name, email: form.email, message: form.message },
+        EMAILJS_KEY
+      )
+      setSent(true)
+    } catch {
+      setSendError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   if (sent) return (
@@ -168,26 +190,38 @@ export default function Contact() {
 
           <button
             type="submit"
+            disabled={sending}
             onMouseEnter={() => setBtnH(true)}
             onMouseLeave={() => setBtnH(false)}
             style={{
               alignSelf: 'flex-start', marginTop: '1rem',
               padding: '1.1rem 2rem',
-              background: btnH ? 'var(--accent)' : 'var(--fg)',
+              background: sending ? 'var(--fg-dim)' : btnH ? 'var(--accent)' : 'var(--fg)',
               color: 'var(--bg)',
-              border: 'none', cursor: 'pointer',
+              border: 'none', cursor: sending ? 'not-allowed' : 'pointer',
               fontFamily: 'var(--sans)', fontSize: '0.9rem', fontWeight: 500,
               display: 'inline-flex', alignItems: 'center', gap: '0.65rem',
               transition: 'all 0.4s cubic-bezier(0.19,1,0.22,1)',
-              transform: btnH ? 'translateY(-3px)' : 'none',
-              boxShadow: btnH ? '0 12px 40px rgba(232,185,132,0.25)' : 'none',
+              transform: (!sending && btnH) ? 'translateY(-3px)' : 'none',
+              boxShadow: (!sending && btnH) ? '0 12px 40px rgba(232,185,132,0.25)' : 'none',
               minWidth: '180px', justifyContent: 'center',
+              opacity: sending ? 0.7 : 1,
             }}>
-            {t.contact.send}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            {sending ? (lang === 'es' ? 'Enviando…' : 'Sending…') : t.contact.send}
+            {!sending && (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            )}
           </button>
+
+          {sendError && (
+            <p style={{ fontSize: '0.82rem', color: '#d97070', marginTop: '0.5rem' }}>
+              {lang === 'es'
+                ? 'Hubo un error al enviar. Intenta escribirme directamente a david25geo@gmail.com'
+                : 'Something went wrong. Try emailing me directly at david25geo@gmail.com'}
+            </p>
+          )}
         </form>
 
         {/* RIGHT — Direct contact info */}
