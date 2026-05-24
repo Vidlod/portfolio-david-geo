@@ -169,7 +169,7 @@ export const projects = [
     },
     tech: ['React', 'Vite', 'Tailwind CSS'],
     url: 'https://simulador-presupuesto-freelance.vercel.app',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    image: '/estimador-preview.jpg',
   },
   { wip: true },
 ]
