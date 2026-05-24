@@ -159,7 +159,7 @@ export const projects = [
     },
     tech: ['React', 'Vite', 'Tailwind CSS'],
     url: 'https://la-milpa.vercel.app',
-    image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=80',
+    image: '/la-milpa-preview.jpg',
   },
   {
     name: 'Estimador',
