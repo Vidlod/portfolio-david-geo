@@ -2,7 +2,7 @@ export const content = {
   es: {
     nav: {
       about: 'Sobre mí', services: 'Servicios',
-      projects: 'Proyectos', skills: 'Skills', contact: 'Contacto',
+      projects: 'Proyectos', skills: 'Habilidades', contact: 'Contacto',
     },
     hero: {
       greeting: 'Hola, soy',
@@ -16,9 +16,9 @@ export const content = {
     about: {
       label: 'Sobre mí',
       title: 'Desarrollador apasionado\npor el diseño y los resultados',
-      p1: 'Soy un desarrollador web freelance basado en Colombia, especializado en construir experiencias digitales rápidas, modernas y que convierten visitantes en clientes.',
-      p2: 'Trabajo con emprendedores, startups y marcas que necesitan presencia digital de calidad sin pagar precios de agencia. Me enfoco en proyectos que se vean bien, funcionen bien y generen resultados reales.',
-      p3: 'Utilizo las mejores herramientas del mercado — incluyendo IA — para entregar proyectos de alta calidad en tiempos cortos.',
+      p1: 'Soy un desarrollador web freelance radicado en Colombia, especializado en crear experiencias digitales rápidas, modernas y diseñadas para convertir visitantes en clientes.',
+      p2: 'Trabajo con emprendedores, startups y marcas que necesitan una presencia digital de primer nivel sin pagar precios de agencia. Me enfoco en proyectos que luzcan increíbles, funcionen a la perfección y generen resultados reales.',
+      p3: 'Utilizo las mejores herramientas del mercado — incluyendo IA — para entregar proyectos de alta calidad en plazos reducidos.',
     },
     services: {
       label: 'Servicios',
@@ -26,17 +26,17 @@ export const content = {
       items: [
         {
           title: 'Landing Pages',
-          desc: 'Diseñadas para convertir visitas en clientes. Velocidad máxima, copy persuasivo y diseño que genera confianza desde el primer scroll.',
+          desc: 'Diseñadas para convertir visitantes en clientes. Velocidad máxima, redacción persuasiva y diseño que genera confianza desde el primer scroll.',
           tags: ['Diseño a medida', 'SEO técnico', 'Alta velocidad', 'Responsive'],
         },
         {
           title: 'Sitios & Portafolios',
-          desc: 'Tu presencia digital con identidad propia. Un sitio que te diferencia, refleja lo que eres y atrae exactamente al cliente que buscas.',
+          desc: 'Tu presencia digital con identidad propia. Un sitio que te diferencie, refleje lo que eres y atraiga exactamente al cliente que buscas.',
           tags: ['Marca personal', 'CMS opcional', 'Multi-página', 'Dominio propio'],
         },
         {
           title: 'Web Apps',
-          desc: 'Herramientas digitales que resuelven problemas reales. Dashboards, sistemas internos y aplicaciones hechas para tu flujo de trabajo exacto.',
+          desc: 'Herramientas digitales que resuelven problemas reales. Dashboards, sistemas internos y aplicaciones adaptadas a tu flujo de trabajo específico.',
           tags: ['React + Python', 'Base de datos', 'Autenticación', 'APIs'],
         },
         {
@@ -61,12 +61,12 @@ export const content = {
     contact: {
       label: 'Contacto',
       title: 'Hablemos',
-      description: '¿Tienes un proyecto en mente? Escríbeme y lo hacemos realidad.',
+      description: '¿Tienes un proyecto en mente? Escríbeme y lo haremos realidad.',
       name: 'Nombre', email: 'Correo', message: '¿En qué puedo ayudarte?',
       send: 'Enviar mensaje',
       orAt: 'O escríbeme directamente:',
       successTitle: '¡Mensaje enviado!',
-      successDesc: 'Te respondo en menos de 24 horas.',
+      successDesc: 'Te responderé en menos de 24 horas.',
     },
     footer: {
       copy: '© 2026 David Geo. Todos los derechos reservados.',
@@ -91,9 +91,9 @@ export const content = {
     about: {
       label: 'About me',
       title: 'Developer passionate\nabout design and results',
-      p1: "I'm a freelance web developer based in Colombia, specialized in building digital experiences that are fast, modern, and convert visitors into clients.",
-      p2: 'I work with entrepreneurs, startups and brands that need quality digital presence without paying agency prices. I focus on projects that look great, work great and drive real results.',
-      p3: 'I leverage the best tools on the market — including AI — to deliver high-quality projects in short timeframes.',
+      p1: "I'm a freelance web developer based in Colombia, specializing in creating fast, modern digital experiences that convert visitors into clients.",
+      p2: 'I work with entrepreneurs, startups and brands that need a high-quality digital presence without paying agency prices. I focus on projects that look stunning, perform flawlessly, and drive real results.',
+      p3: 'I leverage the best tools on the market — including AI — to deliver high-quality projects in reduced timelines.',
     },
     services: {
       label: 'Services',
@@ -116,7 +116,7 @@ export const content = {
         },
         {
           title: 'Maintenance & Support',
-          desc: 'Expert hands on your site after launch. Updates, bug fixes, performance improvements and ongoing support whenever you need it.',
+          desc: 'Your site in expert hands after launch. Updates, bug fixes, performance improvements and ongoing support whenever you need it.',
           tags: ['Updates', 'Fast support', 'Backups', 'Monitoring'],
         },
       ],
@@ -136,7 +136,7 @@ export const content = {
     contact: {
       label: 'Contact',
       title: "Let's talk",
-      description: 'Have a project in mind? Write to me and let\'s make it happen.',
+      description: "Have a project in mind? Get in touch and let's make it happen.",
       name: 'Name', email: 'Email', message: 'How can I help you?',
       send: 'Send message',
       orAt: 'Or reach me directly:',
@@ -171,7 +171,16 @@ export const projects = [
     url: 'https://simulador-presupuesto-freelance.vercel.app',
     image: '/estimador-preview.jpg',
   },
-  { wip: true },
+  {
+    name: 'Static Riot',
+    desc: {
+      es: 'Landing page punk/industrial para banda ficticia. Video hero en loop, efecto glitch animado, ticker de noticias, tracklist interactivo, fechas de tour y tienda de merch.',
+      en: 'Punk/industrial landing page for a fictional band. Looping video hero, animated glitch title, news ticker, interactive tracklist, tour dates and merch store.',
+    },
+    tech: ['React', 'Vite', 'CSS custom'],
+    url: 'https://static-riot-band.vercel.app',
+    image: '/static-riot-preview.jpg',
+  },
 ]
 
 export const skills = [
