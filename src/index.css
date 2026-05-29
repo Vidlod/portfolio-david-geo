@@ -47,18 +47,18 @@ button { font-family: inherit; }
 }
 
 /* ─── White Aurora ───
-   ONE fixed layer holds all warm/cool radial glows as stacked backgrounds.
-   A ::before adds a second drifting layer for depth. Only opacity animates,
-   so the compositor never repaints — cheap even on Intel integrated GPUs. */
+   Sizes in vw/vh so the orbs scale correctly on every screen size.
+   % sizes caused tiny (invisible) orbs on mobile. vw/vh = always big enough.
+   Two CSS layers (element + ::before) instead of 4 separate divs. */
 .aurora {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 42% 30% at 50% 6%,  rgba(255,252,248,0.13) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 22% at 46% 24%, rgba(255,255,255,0.08) 0%, transparent 72%),
-    radial-gradient(ellipse 30% 34% at 96% 14%, rgba(255,255,255,0.10) 0%, transparent 68%);
+    radial-gradient(ellipse 140vw 75vh at 50% -5%,  rgba(255,252,248,0.12) 0%, transparent 68%),
+    radial-gradient(ellipse 90vw  55vh at 108% 14%, rgba(255,255,255,0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 110vw 35vh at 46% 32%,  rgba(255,255,255,0.07) 0%, transparent 70%);
   animation: auroraBreath 22s ease-in-out infinite;
   will-change: opacity;
 }
@@ -67,8 +67,8 @@ button { font-family: inherit; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 40% 24% at 22% 92%, rgba(255,252,245,0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 26% 28% at 4% 34%,  rgba(255,255,255,0.06) 0%, transparent 72%);
+    radial-gradient(ellipse 90vw 50vh at -8% 85%,  rgba(255,252,245,0.08) 0%, transparent 68%),
+    radial-gradient(ellipse 70vw 45vh at 18% 52%,  rgba(255,255,255,0.06) 0%, transparent 70%);
   animation: auroraBreath2 30s ease-in-out infinite 3s;
 }
 
