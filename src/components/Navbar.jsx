@@ -45,9 +45,9 @@ export default function Navbar() {
         }
         .nav-header.scrolled {
           padding: 1.1rem 2.5rem;
-          background: rgba(14,14,14,0.72);
-          backdrop-filter: blur(20px) saturate(140%);
-          -webkit-backdrop-filter: blur(20px) saturate(140%);
+          background: rgba(9,9,9,0.88);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           border-color: var(--line);
         }
         .nav-logo {

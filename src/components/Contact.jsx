@@ -137,9 +137,7 @@ export default function Contact() {
       <div className="contact-grid">
         {/* LEFT — Form in glass card */}
         <div style={{
-          background: 'rgba(9, 9, 9, 0.72)',
-          backdropFilter: 'blur(8px)',
-          WebkitBackdropFilter: 'blur(8px)',
+          background: 'rgba(14, 14, 14, 0.95)',
           border: '1px solid rgba(240, 237, 232, 0.10)',
           padding: 'clamp(2rem, 4vw, 3rem)',
           opacity: inView ? 1 : 0,

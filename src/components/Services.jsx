@@ -37,13 +37,10 @@ function ServiceCard({ s, idx, inView, delay }) {
         onMouseLeave={() => setH(false)}
         style={{
           padding: 'clamp(1.75rem, 3vw, 2.5rem)',
-          background: 'rgba(9, 9, 9, 0.68)',
-          backdropFilter: 'blur(6px)',
-          WebkitBackdropFilter: 'blur(6px)',
-          border: `1px solid ${h ? 'rgba(232,185,132,0.35)' : 'rgba(237,234,227,0.08)'}`,
-          transition: 'border-color 0.45s, transform 0.45s, box-shadow 0.45s',
+          background: h ? 'rgba(22, 22, 22, 0.96)' : 'rgba(14, 14, 14, 0.92)',
+          border: `1px solid ${h ? 'rgba(232,185,132,0.40)' : 'rgba(240,237,232,0.09)'}`,
+          transition: 'border-color 0.4s, transform 0.4s, background 0.4s',
           transform: h ? 'translateY(-5px)' : 'translateY(0)',
-          boxShadow: h ? '0 0 40px rgba(232,185,132,0.07), 0 24px 60px rgba(0,0,0,0.35)' : 'none',
           display: 'flex', flexDirection: 'column', gap: '1.5rem',
           height: '100%',
         }}>
