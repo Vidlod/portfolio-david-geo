@@ -17,17 +17,34 @@ export default function Skills() {
         }
         #skills .chip {
           padding: 0.6rem 1.1rem;
-          border: 1px solid var(--line);
+          border: 1px solid rgba(240,237,232,0.10);
+          background: rgba(16,16,16,0.85);
           font-size: 0.85rem;
           color: var(--fg-dim);
-          transition: border-color 0.3s, color 0.3s, transform 0.3s;
+          transition: border-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
           cursor: default;
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+        }
+        #skills .chip::before {
+          content: '';
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: var(--cyan);
+          opacity: 0;
+          flex-shrink: 0;
+          transition: opacity 0.3s;
         }
         #skills .chip:hover {
-          border-color: var(--fg-dim);
+          border-color: rgba(34,211,238,0.35);
           color: var(--fg);
           transform: translateY(-2px);
+          box-shadow: 0 0 16px rgba(34,211,238,0.06);
+        }
+        #skills .chip:hover::before {
+          opacity: 1;
         }
         @media (max-width: 1024px) {
           #skills .skills-grid { grid-template-columns: 1fr; gap: 3.5rem; }

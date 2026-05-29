@@ -28,8 +28,18 @@ export default function Hero() {
           opacity: 0;
         }
         .hero-h1 {
-          font-size: clamp(3.5rem, 12vw, 12rem);
+          font-size: clamp(3rem, 6.5vw, 6.5rem);
           margin-bottom: 2.5rem;
+        }
+        .hero-greeting {
+          font-size: clamp(0.72rem, 1.1vw, 0.85rem);
+          font-family: var(--sans);
+          font-weight: 400;
+          color: var(--fg-faint);
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          margin-bottom: 1.1rem;
+          display: block;
         }
         .hero-bottom-grid {
           display: grid;
@@ -108,18 +118,6 @@ export default function Hero() {
         }
       `}</style>
 
-      {/* Breathing orb — the single atmospheric detail */}
-      <div style={{
-        position: 'absolute',
-        top: '55%', left: '35%',
-        width: '800px', height: '800px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(232,185,132,0.09) 0%, rgba(232,185,132,0.03) 40%, transparent 70%)',
-        filter: 'blur(50px)',
-        animation: 'breathe 16s ease-in-out infinite',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
 
       <div className="hero-inner">
         {/* Available badge */}
@@ -134,8 +132,7 @@ export default function Hero() {
 
         {/* Name — big, confident */}
         <h1 className="display hero-h1" style={{ color: 'var(--fg)' }}>
-          <span style={{
-            display: 'block',
+          <span className="hero-greeting" style={{
             animation: 'fadeUp 1.1s 0.25s cubic-bezier(0.19,1,0.22,1) forwards',
             opacity: 0,
           }}>
@@ -143,8 +140,13 @@ export default function Hero() {
           </span>
           <span style={{
             display: 'block',
-            fontStyle: 'italic', fontWeight: 300,
-            animation: 'fadeUp 1.1s 0.42s cubic-bezier(0.19,1,0.22,1) forwards',
+            fontWeight: 800,
+            background: 'linear-gradient(90deg, #E8B984 0%, #EDEAE3 45%, #E8B984 100%)',
+            backgroundSize: '200% auto',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: 'fadeUp 1.1s 0.42s cubic-bezier(0.19,1,0.22,1) forwards, gradientFlow 5s 1.55s linear infinite',
             opacity: 0,
           }}>
             David Geo.

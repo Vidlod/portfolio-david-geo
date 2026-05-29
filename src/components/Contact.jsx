@@ -11,7 +11,7 @@ const inputStyle = (focused, error) => ({
   width: '100%',
   background: 'transparent',
   border: 'none',
-  borderBottom: `1px solid ${error ? '#d97070' : focused ? 'var(--fg)' : 'var(--line)'}`,
+  borderBottom: `1px solid ${error ? '#d97070' : focused ? 'var(--cyan)' : 'rgba(237,234,227,0.12)'}`,
   color: 'var(--fg)',
   padding: '1rem 0',
   fontSize: 'clamp(0.95rem, 1.6vw, 1rem)',
@@ -135,12 +135,19 @@ export default function Contact() {
       </h2>
 
       <div className="contact-grid">
-        {/* LEFT — Form */}
-        <form onSubmit={handleSubmit} noValidate style={{
-          display: 'flex', flexDirection: 'column', gap: '2rem',
+        {/* LEFT — Form in glass card */}
+        <div style={{
+          background: 'rgba(9, 9, 9, 0.72)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          border: '1px solid rgba(240, 237, 232, 0.10)',
+          padding: 'clamp(2rem, 4vw, 3rem)',
           opacity: inView ? 1 : 0,
           transform: inView ? 'translateY(0)' : 'translateY(30px)',
           transition: 'opacity 1s 0.28s cubic-bezier(0.19,1,0.22,1), transform 1s 0.28s cubic-bezier(0.19,1,0.22,1)',
+        }}>
+        <form onSubmit={handleSubmit} noValidate style={{
+          display: 'flex', flexDirection: 'column', gap: '2rem',
         }}>
           {[
             { key: 'name',  n: '01', label: t.contact.name },
@@ -223,6 +230,7 @@ export default function Contact() {
             </p>
           )}
         </form>
+        </div>
 
         {/* RIGHT — Direct contact info */}
         <div style={{

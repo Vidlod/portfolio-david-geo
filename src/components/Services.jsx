@@ -37,12 +37,13 @@ function ServiceCard({ s, idx, inView, delay }) {
         onMouseLeave={() => setH(false)}
         style={{
           padding: 'clamp(1.75rem, 3vw, 2.5rem)',
-          backgroundColor: h ? 'var(--bg-soft)' : 'transparent',
-          border: '1px solid var(--line)',
-          borderColor: h ? 'rgba(237,234,227,0.22)' : 'var(--line)',
-          transition: 'background 0.45s, border-color 0.45s, transform 0.45s, box-shadow 0.45s',
+          background: 'rgba(9, 9, 9, 0.68)',
+          backdropFilter: 'blur(6px)',
+          WebkitBackdropFilter: 'blur(6px)',
+          border: `1px solid ${h ? 'rgba(232,185,132,0.35)' : 'rgba(237,234,227,0.08)'}`,
+          transition: 'border-color 0.45s, transform 0.45s, box-shadow 0.45s',
           transform: h ? 'translateY(-5px)' : 'translateY(0)',
-          boxShadow: h ? '0 20px 60px rgba(0,0,0,0.3)' : 'none',
+          boxShadow: h ? '0 0 40px rgba(232,185,132,0.07), 0 24px 60px rgba(0,0,0,0.35)' : 'none',
           display: 'flex', flexDirection: 'column', gap: '1.5rem',
           height: '100%',
         }}>
@@ -53,11 +54,10 @@ function ServiceCard({ s, idx, inView, delay }) {
         }}>
           <div style={{
             width: '44px', height: '44px',
-            border: '1px solid var(--line)',
+            border: `1px solid ${h ? 'rgba(34,211,238,0.4)' : 'rgba(237,234,227,0.08)'}`,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: h ? 'var(--accent)' : 'var(--fg-dim)',
+            color: h ? 'var(--cyan)' : 'var(--fg-dim)',
             transition: 'color 0.4s, border-color 0.4s',
-            borderColor: h ? 'rgba(232,185,132,0.4)' : 'var(--line)',
             flexShrink: 0,
           }}>
             {icons[idx]}
