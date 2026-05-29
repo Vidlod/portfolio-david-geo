@@ -46,6 +46,32 @@ button { font-family: inherit; }
   line-height: 0.92;
 }
 
+/* ─── White Aurora ───
+   ONE fixed layer holds all warm/cool radial glows as stacked backgrounds.
+   A ::before adds a second drifting layer for depth. Only opacity animates,
+   so the compositor never repaints — cheap even on Intel integrated GPUs. */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 42% 30% at 50% 6%,  rgba(255,252,248,0.13) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 22% at 46% 24%, rgba(255,255,255,0.08) 0%, transparent 72%),
+    radial-gradient(ellipse 30% 34% at 96% 14%, rgba(255,255,255,0.10) 0%, transparent 68%);
+  animation: auroraBreath 22s ease-in-out infinite;
+  will-change: opacity;
+}
+.aurora::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 40% 24% at 22% 92%, rgba(255,252,245,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 26% 28% at 4% 34%,  rgba(255,255,255,0.06) 0%, transparent 72%);
+  animation: auroraBreath2 30s ease-in-out infinite 3s;
+}
+
 /* ─── Glassmorphism card ─── */
 .glass {
   background: rgba(9, 9, 9, 0.65);

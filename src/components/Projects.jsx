@@ -34,9 +34,7 @@ function ProjectCard({ project, t, lang, idx, inView, delay }) {
 
   if (project.wip) return (
     <div style={{
-      background: 'rgba(14,14,14,0.45)',
-      backdropFilter: 'blur(20px)',
-      WebkitBackdropFilter: 'blur(20px)',
+      background: 'rgba(14,14,14,0.8)',
       border: '1px dashed rgba(237,234,227,0.08)',
       minHeight: '360px',
       display: 'flex', flexDirection: 'column',
@@ -110,8 +108,7 @@ function ProjectCard({ project, t, lang, idx, inView, delay }) {
             <div style={{
               position: 'absolute', top: '1.25rem', right: '1.25rem',
               width: '40px', height: '40px',
-              background: h ? 'var(--accent)' : 'rgba(14,14,14,0.6)',
-              backdropFilter: 'blur(8px)',
+              background: h ? 'var(--accent)' : 'rgba(14,14,14,0.85)',
               border: `1px solid ${h ? 'var(--accent)' : 'rgba(237,234,227,0.2)'}`,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               color: h ? 'var(--bg)' : 'var(--fg)',
