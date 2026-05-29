@@ -56,9 +56,9 @@ button { font-family: inherit; }
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 140vw 75vh at 50% -5%,  rgba(255,252,248,0.12) 0%, transparent 68%),
-    radial-gradient(ellipse 90vw  55vh at 108% 14%, rgba(255,255,255,0.09) 0%, transparent 65%),
-    radial-gradient(ellipse 110vw 35vh at 46% 32%,  rgba(255,255,255,0.07) 0%, transparent 70%);
+    radial-gradient(ellipse 140vw 75vh at 50% -5%,  rgba(255,252,248,0.28) 0%, transparent 68%),
+    radial-gradient(ellipse 90vw  55vh at 108% 14%, rgba(255,255,255,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 110vw 35vh at 46% 32%,  rgba(255,255,255,0.16) 0%, transparent 70%);
   animation: auroraBreath 22s ease-in-out infinite;
   will-change: opacity;
 }
@@ -67,8 +67,8 @@ button { font-family: inherit; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 90vw 50vh at -8% 85%,  rgba(255,252,245,0.08) 0%, transparent 68%),
-    radial-gradient(ellipse 70vw 45vh at 18% 52%,  rgba(255,255,255,0.06) 0%, transparent 70%);
+    radial-gradient(ellipse 90vw 50vh at -8% 85%,  rgba(255,252,245,0.18) 0%, transparent 68%),
+    radial-gradient(ellipse 70vw 45vh at 18% 52%,  rgba(255,255,255,0.14) 0%, transparent 70%);
   animation: auroraBreath2 30s ease-in-out infinite 3s;
 }
 
