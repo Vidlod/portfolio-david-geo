@@ -85,8 +85,11 @@ function ProjectCard({ project, t, lang, idx, inView, delay }) {
           }}>
             <div style={{
               position: 'absolute', inset: 0,
-              backgroundImage: `url(${project.image})`,
-              backgroundSize: 'cover', backgroundPosition: 'center',
+              backgroundImage: project.image
+                ? `url(${project.image}), ${project.gradient}`
+                : project.gradient,
+              backgroundSize: 'cover, cover',
+              backgroundPosition: 'center, center',
               transform: h ? 'scale(1.06)' : 'scale(1)',
               filter: h ? 'grayscale(0) brightness(1)' : 'grayscale(0.4) brightness(0.8)',
               transition: 'transform 1.4s cubic-bezier(0.19,1,0.22,1), filter 0.7s',

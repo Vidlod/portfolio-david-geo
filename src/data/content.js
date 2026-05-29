@@ -10,6 +10,7 @@ export const content = {
       title: 'Full Stack Developer',
       subtitle: 'Landing Pages & Web Apps',
       description: 'Convierto ideas en sitios web que generan resultados.',
+      manifesto: 'Ser como todos es ser como nadie.',
       cta1: 'Ver mi trabajo', cta2: 'Contáctame',
       badge: 'Disponible para proyectos',
     },
@@ -85,6 +86,7 @@ export const content = {
       title: 'Full Stack Developer',
       subtitle: 'Landing Pages & Web Apps',
       description: 'I turn ideas into websites that deliver real results.',
+      manifesto: 'To be like everyone is to be like no one.',
       cta1: 'See my work', cta2: 'Contact me',
       badge: 'Available for projects',
     },
@@ -160,6 +162,7 @@ export const projects = [
     tech: ['React', 'Vite', 'Tailwind CSS'],
     url: 'https://la-milpa.vercel.app',
     image: '/la-milpa-preview.jpg',
+    gradient: 'linear-gradient(135deg, #1a0a00 0%, #0d0d0d 45%, #0f0800 100%)',
   },
   {
     name: 'Estimador',
@@ -170,6 +173,7 @@ export const projects = [
     tech: ['React', 'Vite', 'Tailwind CSS'],
     url: 'https://simulador-presupuesto-freelance.vercel.app',
     image: '/estimador-preview.jpg',
+    gradient: 'linear-gradient(135deg, #020d1a 0%, #0a0a0d 50%, #000d1a 100%)',
   },
   {
     name: 'Static Riot',
@@ -180,6 +184,7 @@ export const projects = [
     tech: ['React', 'Vite', 'CSS custom'],
     url: 'https://static-riot-band.vercel.app',
     image: '/static-riot-preview.jpg',
+    gradient: 'linear-gradient(135deg, #1a0303 0%, #0a0a0a 40%, #130000 100%)',
   },
 ]
 

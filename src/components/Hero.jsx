@@ -153,6 +153,20 @@ export default function Hero() {
           </span>
         </h1>
 
+        {/* Manifesto */}
+        <p className="display" style={{
+          fontSize: 'clamp(0.92rem, 1.4vw, 1.1rem)',
+          fontStyle: 'italic',
+          fontWeight: 400,
+          color: 'var(--fg-faint)',
+          letterSpacing: '0.01em',
+          marginBottom: '0.5rem',
+          animation: 'fadeUp 1s 0.56s ease forwards',
+          opacity: 0,
+        }}>
+          {t.hero.manifesto}
+        </p>
+
         {/* Bottom two-col */}
         <div className="hero-bottom-grid">
           {/* Description */}
