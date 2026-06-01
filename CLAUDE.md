@@ -113,11 +113,24 @@ src/components/
 ├── Footer.jsx
 ├── Hero.jsx
 ├── Navbar.jsx
-├── Projects.jsx
-├── ScrollLines.jsx   ← efecto decorativo de líneas de scroll
+├── ProjectCarousel.jsx  ← coverflow 3D (Framer Motion) — showcase encima del grid
+├── Projects.jsx         ← carrusel + grid de proyectos
+├── ScrollLines.jsx      ← efecto decorativo de líneas de scroll
 ├── Services.jsx
 └── Skills.jsx
 ```
+
+### Orden de secciones (App.jsx)
+Hero → **Projects** (01) → About (02) → Services (03) → Skills (04) → Contact (05).
+Proyectos se subió justo después del Hero; los números del `eyebrow` se renumeraron en consecuencia.
+
+### ProjectCarousel.jsx — coverflow 3D
+Carrusel circular sobre eje vertical con **Framer Motion** (`motion`, `AnimatePresence`) e iconos de **Lucide** (`ChevronLeft/Right`, `ArrowUpRight`).
+- Imagen central grande y de frente; laterales inclinadas (`rotateY`) y retrocedidas (`translateZ`) en perspectiva.
+- Auto-rota cada 4.2s; se pausa al hover/focus/drag y respeta `prefers-reduced-motion` + `inView`.
+- Control manual: flechas, arrastre (`drag="x"` con snap), clic en laterales e indicadores.
+- Solo anima `opacity`/`transform`/`filter` puntual (Intel-Mac friendly). Reutiliza el lenguaje de marcos del grid (borde ámbar al frente, fondo `rgba(9,9,9,0.72)`).
+- Lee los mismos `projects` de `src/data/content.js` — agregar un proyecto ahí lo añade al carrusel y al grid automáticamente.
 
 ## Contexto adicional
 - `src/context/LanguageContext.jsx` — maneja i18n (es/en)

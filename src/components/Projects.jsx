@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
 import { projects } from '../data/content'
+import ProjectCarousel from './ProjectCarousel'
 
 function ProjectCard({ project, t, lang, idx, inView, delay }) {
   const [h, setH] = useState(false)
@@ -171,7 +172,7 @@ export default function Projects() {
         transition: 'opacity 0.9s, transform 0.9s cubic-bezier(0.19,1,0.22,1)',
       }}>
         <span className="eyebrow-dot" />
-        03 — {t.projects.label}
+        01 — {t.projects.label}
       </div>
 
       <h2 className="display" style={{
@@ -183,6 +184,9 @@ export default function Projects() {
       }}>
         {t.projects.title}
       </h2>
+
+      {/* Carrusel coverflow 3D — showcase visual encima del grid */}
+      <ProjectCarousel inView={inView} />
 
       <div className="projects-grid">
         {projects.map((p, i) => (

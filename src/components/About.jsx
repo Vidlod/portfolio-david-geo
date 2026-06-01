@@ -29,7 +29,7 @@ export default function About() {
         transition: 'opacity 0.9s, transform 0.9s cubic-bezier(0.19,1,0.22,1)',
       }}>
         <span className="eyebrow-dot" />
-        01 — {t.about.label}
+        02 — {t.about.label}
       </div>
 
       <div className="about-grid">

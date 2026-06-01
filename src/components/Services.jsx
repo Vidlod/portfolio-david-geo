@@ -130,7 +130,7 @@ export default function Services() {
         transition: 'opacity 0.9s, transform 0.9s cubic-bezier(0.19,1,0.22,1)',
       }}>
         <span className="eyebrow-dot" />
-        02 — {t.services.label}
+        03 — {t.services.label}
       </div>
 
       {/* Headline */}
