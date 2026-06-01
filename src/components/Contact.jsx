@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { useLanguage } from '../context/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
@@ -7,26 +7,10 @@ const EMAILJS_SERVICE  = 'service_vynd56d'
 const EMAILJS_TEMPLATE = 'template_l3plcir'
 const EMAILJS_KEY      = '47zZDCw1reqTnp5uS'
 
-const inputStyle = (focused, error) => ({
-  width: '100%',
-  background: 'transparent',
-  border: 'none',
-  borderBottom: `1px solid ${error ? '#d97070' : focused ? 'var(--cyan)' : 'rgba(237,234,227,0.12)'}`,
-  color: 'var(--fg)',
-  padding: '1rem 0',
-  fontSize: 'clamp(0.95rem, 1.6vw, 1rem)',
-  outline: 'none',
-  fontFamily: 'var(--sans)',
-  transition: 'border-color 0.35s',
-  boxSizing: 'border-box',
-  WebkitAppearance: 'none',
-})
-
 export default function Contact() {
   const { t, lang } = useLanguage()
   const [ref, inView] = useReveal()
   const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [focused, setFocused] = useState(null)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
@@ -88,8 +72,39 @@ export default function Contact() {
     <section id="contacto" className="section" ref={ref}>
       <style>{`
         #contacto input::placeholder,
-        #contacto textarea::placeholder { color: var(--fg-faint); font-family: var(--sans); }
-        #contacto textarea { resize: vertical; }
+        #contacto textarea::placeholder {
+          color: rgba(240, 237, 232, 0.45);
+          font-family: var(--sans);
+          opacity: 1; /* evita el atenuado por defecto de algunos navegadores */
+        }
+
+        /* ── Campos: "filled underline" — superficie sutil + subrayado visible ── */
+        #contacto .field {
+          width: 100%;
+          box-sizing: border-box;
+          background: rgba(240, 237, 232, 0.035);
+          border: none;
+          border-bottom: 1.5px solid rgba(237, 234, 227, 0.28);
+          color: var(--fg);
+          padding: 0.85rem 0.9rem;
+          font-size: clamp(0.95rem, 1.6vw, 1rem);
+          font-family: var(--sans);
+          outline: none;
+          -webkit-appearance: none;
+          transition: background 0.35s, border-color 0.35s, box-shadow 0.35s;
+        }
+        #contacto .field:hover {
+          background: rgba(240, 237, 232, 0.06);
+          border-bottom-color: rgba(237, 234, 227, 0.5);
+        }
+        #contacto .field:focus {
+          background: rgba(240, 237, 232, 0.06);
+          border-bottom-color: var(--cyan);
+          box-shadow: 0 6px 22px -10px rgba(34, 211, 238, 0.5);
+        }
+        #contacto .field.error { border-bottom-color: #d97070; }
+        #contacto .field.error:focus { box-shadow: 0 6px 22px -10px rgba(217, 112, 112, 0.45); }
+        #contacto textarea.field { resize: vertical; min-height: 110px; }
         #contacto .contact-grid {
           display: grid;
           grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
@@ -148,27 +163,25 @@ export default function Contact() {
           display: 'flex', flexDirection: 'column', gap: '2rem',
         }}>
           {[
-            { key: 'name',  n: '01', label: t.contact.name },
-            { key: 'email', n: '02', label: t.contact.email, type: 'email' },
+            { key: 'name',  n: '01', label: t.contact.name,  ph: lang === 'es' ? 'Tu nombre' : 'Your name' },
+            { key: 'email', n: '02', label: t.contact.email, type: 'email', ph: lang === 'es' ? 'tu@correo.com' : 'you@email.com' },
           ].map(field => (
             <div key={field.key}>
               <label style={{
                 display: 'block', fontSize: '0.72rem',
-                color: errors[field.key] ? '#d97070' : 'var(--fg-faint)',
-                marginBottom: '0.4rem', letterSpacing: '0.02em',
+                color: errors[field.key] ? '#d97070' : 'rgba(240,237,232,0.7)',
+                marginBottom: '0.55rem', letterSpacing: '0.02em',
                 transition: 'color 0.3s',
               }}>
                 {field.n} — {field.label}{errors[field.key] ? ' *' : ''}
               </label>
               <input
                 type={field.type || 'text'}
-                placeholder=""
+                placeholder={field.ph}
+                className={`field${errors[field.key] ? ' error' : ''}`}
                 value={form[field.key]}
                 autoComplete={field.key === 'email' ? 'email' : 'name'}
                 onChange={e => { setForm(f => ({ ...f, [field.key]: e.target.value })); setErrors(er => ({ ...er, [field.key]: false })) }}
-                onFocus={() => setFocused(field.key)}
-                onBlur={() => setFocused(null)}
-                style={inputStyle(focused === field.key, errors[field.key])}
               />
             </div>
           ))}
@@ -176,20 +189,18 @@ export default function Contact() {
           <div>
             <label style={{
               display: 'block', fontSize: '0.72rem',
-              color: errors.message ? '#d97070' : 'var(--fg-faint)',
-              marginBottom: '0.4rem', letterSpacing: '0.02em',
+              color: errors.message ? '#d97070' : 'rgba(240,237,232,0.7)',
+              marginBottom: '0.55rem', letterSpacing: '0.02em',
               transition: 'color 0.3s',
             }}>
               03 — {t.contact.message}{errors.message ? ' *' : ''}
             </label>
             <textarea
-              placeholder=""
+              placeholder={lang === 'es' ? 'Cuéntame sobre tu proyecto…' : 'Tell me about your project…'}
               rows={4}
+              className={`field${errors.message ? ' error' : ''}`}
               value={form.message}
               onChange={e => { setForm(f => ({ ...f, message: e.target.value })); setErrors(er => ({ ...er, message: false })) }}
-              onFocus={() => setFocused('message')}
-              onBlur={() => setFocused(null)}
-              style={{ ...inputStyle(focused === 'message', errors.message), minHeight: '110px' }}
             />
           </div>
 
