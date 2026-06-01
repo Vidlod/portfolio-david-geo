@@ -36,12 +36,12 @@ export default function ProjectCarousel({ inView }) {
     return () => mq.removeEventListener('change', onChange)
   }, [])
 
-  // Geometría del coverflow — más compacta en móvil para que las
-  // laterales asomen y se note el efecto circular.
+  // Geometría: coverflow 3D en tablet/desktop; en móvil una sola tarjeta
+  // con slide horizontal (sin laterales 3D) para que se vea enfocada.
   const geo = isMobile
-    ? { xMul: 50, rotY: 36, depth: 150, sideScale: 0.7,
-        cardW: 'clamp(180px, 62vw, 300px)', cardH: 'clamp(150px, 44vw, 230px)',
-        stageH: 'clamp(200px, 50vw, 270px)' }
+    ? { xMul: 100, rotY: 0, depth: 0, sideScale: 1,
+        cardW: 'clamp(240px, 84vw, 440px)', cardH: 'clamp(180px, 58vw, 320px)',
+        stageH: 'clamp(210px, 64vw, 360px)' }
     : { xMul: 58, rotY: 42, depth: 250, sideScale: 0.76,
         cardW: 'clamp(300px, 56vw, 660px)', cardH: 'clamp(220px, 38vw, 430px)',
         stageH: 'clamp(260px, 42vw, 480px)' }
@@ -124,7 +124,7 @@ export default function ProjectCarousel({ inView }) {
                   rotateY: d * -geo.rotY,
                   z: -ad * geo.depth,
                   scale: isCenter ? 1 : geo.sideScale,
-                  opacity: ad >= 2 ? 0 : isCenter ? 1 : 0.5,
+                  opacity: isCenter ? 1 : isMobile ? 0 : ad >= 2 ? 0 : 0.5,
                   filter: isCenter
                     ? 'grayscale(0) brightness(1)'
                     : 'grayscale(0.5) brightness(0.6)',
@@ -140,7 +140,7 @@ export default function ProjectCarousel({ inView }) {
                   transformOrigin: 'center center',
                   zIndex: 20 - ad * 10,
                   cursor: isCenter ? 'default' : 'pointer',
-                  pointerEvents: ad >= 2 ? 'none' : 'auto',
+                  pointerEvents: (!isCenter && isMobile) || ad >= 2 ? 'none' : 'auto',
                 }}
               >
                 <Frame project={p} idx={i} isCenter={isCenter} t={t} lang={lang} />
@@ -194,6 +194,15 @@ export default function ProjectCarousel({ inView }) {
             </div>
             <p style={{ marginTop: '0.55rem', fontSize: '0.72rem', color: 'var(--cyan)', letterSpacing: '0.01em' }}>
               {current.tech.join(' · ')}
+            </p>
+            <p style={{
+              margin: '0.9rem auto 0',
+              maxWidth: '46ch',
+              fontSize: 'clamp(0.86rem, 1.5vw, 0.92rem)',
+              lineHeight: 1.65,
+              color: 'var(--fg-dim)',
+            }}>
+              {current.desc[lang]}
             </p>
           </motion.div>
         </AnimatePresence>
